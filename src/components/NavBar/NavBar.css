@@ -1,0 +1,7 @@
+.navbar{
+  background-color: #3282B8;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+.navbar-brand{
+  font-size: x-large;
+}

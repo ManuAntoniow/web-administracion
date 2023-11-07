@@ -1,0 +1,9 @@
+footer{
+  text-align: center;
+  width: 100%;
+  background-color: gray;
+  position: absolute;
+  bottom: 0;
+  margin-top: 100px;
+  box-shadow: -20px 0px 60px #bebebe;
+}
