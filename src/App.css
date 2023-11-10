@@ -1,3 +1,15 @@
 .App {
-  text-align: center;
+  font-family: 'Fredoka', sans-serif;
+}
+.contenido{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.logoInicio{
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  width: 100px;
 }

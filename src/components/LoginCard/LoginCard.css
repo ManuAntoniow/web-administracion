@@ -1,0 +1,20 @@
+.login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-width: 5px !important;
+  border-radius: 20px !important;
+}
+.loginForm{
+  width: 300px;
+  margin-left: 0;
+  padding: 10px;
+}
+.login button{
+  width: 100px;
+}
+
+.logInButton{
+  justify-content: center;
+}
