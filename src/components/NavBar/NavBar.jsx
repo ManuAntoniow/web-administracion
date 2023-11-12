@@ -12,6 +12,9 @@ import Nav from 'react-bootstrap/Nav'
 // IMG
 import LOGO from '../../img/logo.png'
 
+// COMPONENTS
+import LogOut from '../LogOut/LogOut'
+
 const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" sticky="top">
@@ -31,6 +34,9 @@ const NavBar = () => {
           <Nav className="me-auto">
             <Nav.Link as={Link} to='/Xustans'>Inicio</Nav.Link>
             <Nav.Link as={Link} to='/Xustans/Ubicacion'>Reportes</Nav.Link>
+          </Nav>
+          <Nav>
+            <LogOut/>
           </Nav>
         </Navbar.Collapse>
       </Container>

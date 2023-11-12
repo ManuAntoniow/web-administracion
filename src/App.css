@@ -13,3 +13,24 @@
   top: 20px;
   width: 100px;
 }
+@media (prefers-color-scheme: light) {
+  .contenido {
+    background: whitesmoke;
+  } 
+}
+@media (prefers-color-scheme: dark) {
+  .contenido {
+    background: #202124;
+    color: white;
+  } 
+  .card-title{
+    color: white;
+  }
+  label{
+    color: white;
+  }
+  .form-control{
+    background-color: #202124 !important;
+    color: white !important;
+  }
+}

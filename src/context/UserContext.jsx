@@ -14,8 +14,13 @@ export const UserProvider = ({children}) => {
     localStorage.setItem('LOGGED', JSON.stringify(true))
   }
   
+  const logOut = () => {
+    setLogIn(false)
+    localStorage.setItem('LOGGED', JSON.stringify(false))
+  }
+
   return(
-    <UserContext.Provider value={{userActive, logIn}}>
+    <UserContext.Provider value={{userActive, logOut, logIn}}>
       {children}
     </UserContext.Provider>
   )

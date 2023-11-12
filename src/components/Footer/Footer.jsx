@@ -4,7 +4,7 @@ import './Footer.css'
 function Footer() {
   return (
     <footer> 
-      <p>© 2023 Copyright: Xustans S.A.</p>
+      <p>© 2023 Copyright: Web Administracion</p>
     </footer>
   )
 }

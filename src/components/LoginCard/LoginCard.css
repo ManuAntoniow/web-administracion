@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-width: 5px !important;
   border-radius: 20px !important;
 }
 .loginForm{
@@ -13,8 +12,22 @@
 }
 .login button{
   width: 100px;
+  margin-top: 10px;
 }
-
 .logInButton{
   justify-content: center;
+}
+.card-title{
+  margin-top: 20px;
+}
+@media (prefers-color-scheme: light) {
+  .login {
+    background: whitesmoke;
+  } 
+}
+@media (prefers-color-scheme: dark) {
+  .login {
+    background: #202124;
+    box-shadow: 20px 20px 60px #1b1c1f, -20px -20px 60px #252629;
+  } 
 }

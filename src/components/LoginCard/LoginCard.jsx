@@ -38,7 +38,7 @@ const LoginCard = () => {
   const logIn = async(event) => {
     event.preventDefault()
     console.log(datos)
-    const res = await axios.get(`${URL}personas/login`)
+    const res = await axios.post(`${URL}personas/login`, datos)
     console.log(res.data)
     if (res.data) {
       context.userActive()
@@ -53,20 +53,20 @@ const LoginCard = () => {
         <Card.Title>Administracion de Edificios</Card.Title>
         <Card.Text>
           <form className='loginForm' onSubmit={logIn}>
-            <Row>
+            <Row className='mb-3'>
               <Form.Group controlId="formGridUsuario">
                 <Form.Label>E-Mail</Form.Label>
                 <Form.Control placeholder="Ingrese su mail" type='email' name='mail' onChange={handleInputChange}/>
               </Form.Group>
             </Row>
-            <Row>
+            <Row className='mb-3'>
               <Form.Group controlId="formGridPass">
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control placeholder="Ingrese su contraseña" type="password" name='contrasenia' onChange={handleInputChange}/>
               </Form.Group>
             </Row>
-            <Row className='logInButton'>
-              <Button variant="danger" type='submit'>Ingresar</Button>
+            <Row className='logInButton mb-3'>
+              <Button type='submit'>Ingresar</Button>
             </Row>
           </form>
         </Card.Text>
