@@ -28,6 +28,6 @@
 @media (prefers-color-scheme: dark) {
   .login {
     background: #202124;
-    box-shadow: 20px 20px 60px #1b1c1f, -20px -20px 60px #252629;
+    box-shadow: 20px 20px 60px #1b1c1f, -20px -20px 60px #000000;
   } 
 }

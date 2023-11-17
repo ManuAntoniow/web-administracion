@@ -13,13 +13,19 @@
   top: 20px;
   width: 100px;
 }
+
+.cabeceraReclamos{
+  width: 100%;
+  padding: 20px;
+}
+
 @media (prefers-color-scheme: light) {
-  .contenido {
+  .App {
     background: whitesmoke;
   } 
 }
 @media (prefers-color-scheme: dark) {
-  .contenido {
+  .App {
     background: #202124;
     color: white;
   } 

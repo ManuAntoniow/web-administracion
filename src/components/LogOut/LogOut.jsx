@@ -9,8 +9,11 @@ import { UserContext } from '../../context/UserContext'
 
 const LogOut = () => {
   const context = useContext(UserContext)
+  const handleLogOut = () => {
+    context.logOut()
+  }
   return (
-    <Button onClick={context.logOut()}>Log Out</Button>
+    <Button variant='dark' onClick={handleLogOut}>Log Out</Button>
   )
 }
 

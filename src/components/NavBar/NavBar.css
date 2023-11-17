@@ -1,7 +1,17 @@
-.navbar{
-  background-color: #3282B8;
-  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
-}
 .navbar-brand{
+  display: flex;
   font-size: x-large;
+  align-items: center;
+}
+@media (prefers-color-scheme: light) {
+  .navbar{
+    background-color: #0d6efd;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .navbar{
+    background-color: #712cf9;
+    box-shadow: 20px 20px 60px #1b1c1f, -20px -20px 60px #000000;
+  }
 }
