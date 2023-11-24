@@ -3,7 +3,7 @@ import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // CSS
-import './LoginCard.css'
+import './Cards.css'
 
 // BOOTSTRAP
 import Button from 'react-bootstrap/Button'
@@ -41,7 +41,8 @@ const LoginCard = () => {
     const res = await axios.post(`${URL}personas/login`, datos)
     console.log(res.data)
     if (res.data) {
-      context.userActive()
+      context.userActive(res.data.documento)
+      console.log(res.data.documento)
       navigate('/inicio')
     } else {
       alert('usuario o contraseña incorrectos')
@@ -49,29 +50,28 @@ const LoginCard = () => {
   }
   
   return (
-      <Card className='login'>
-        <Card.Title>Administracion de Edificios</Card.Title>
-        <Card.Text>
-          <form className='loginForm' onSubmit={logIn}>
-            <Row className='mb-3'>
-              <Form.Group controlId="formGridUsuario">
-                <Form.Label>E-Mail</Form.Label>
-                <Form.Control placeholder="Ingrese su mail" type='email' name='mail' onChange={handleInputChange}/>
-              </Form.Group>
-            </Row>
-            <Row className='mb-3'>
-              <Form.Group controlId="formGridPass">
-                <Form.Label>Contraseña</Form.Label>
-                <Form.Control placeholder="Ingrese su contraseña" type="password" name='contrasenia' onChange={handleInputChange}/>
-              </Form.Group>
-            </Row>
-            <Row className='logInButton mb-3'>
-              <Button type='submit'>Ingresar</Button>
-            </Row>
-          </form>
-        </Card.Text>
-      </Card>
-
+    <Card>
+      <Card.Title>Administracion de Edificios</Card.Title>
+      <Card.Text>
+        <form className='CardForm' onSubmit={logIn}>
+          <Row className='mb-3'>
+            <Form.Group controlId="formGridUsuario">
+              <Form.Label>E-Mail</Form.Label>
+              <Form.Control placeholder="Ingrese su mail" type='email' name='mail' onChange={handleInputChange}/>
+            </Form.Group>
+          </Row>
+          <Row className='mb-3'>
+            <Form.Group controlId="formGridPass">
+              <Form.Label>Contraseña</Form.Label>
+              <Form.Control placeholder="Ingrese su contraseña" type="password" name='contrasenia' onChange={handleInputChange}/>
+            </Form.Group>
+          </Row>
+          <Row className='SubmitButton mb-3'>
+            <Button type='submit'>Ingresar</Button>
+          </Row>
+        </form>
+      </Card.Text>
+    </Card>
   )
 }
 

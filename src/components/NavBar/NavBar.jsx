@@ -33,7 +33,7 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to='/inicio'>Inicio</Nav.Link>
-            <Nav.Link as={Link} to='/reporte'>Reportes</Nav.Link>
+            <Nav.Link as={Link} to='/crearReclamo'>Crear Reclamo</Nav.Link>
           </Nav>
           <Nav>
             <LogOut/>

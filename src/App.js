@@ -7,9 +7,12 @@ import './App.css'
 // PAGES
 import LogIn from './pages/LogIn'
 import Inicio from './pages/Inicio'
+import CrearReclamo from './pages/CrearReclamo'
+import Reclamo from './pages/Reclamo'
 
 // COMPONENTS
 import NavBar from './components/NavBar/NavBar'
+import Footer from './components/Footer/Footer'
 
 //CONTEXT
 import { UserProvider } from './context/UserContext'
@@ -30,16 +33,19 @@ function App() {
 
 function AppContent() {
   const location = useLocation()
-  const renderNavBar = location.pathname !== '/'
+  const render = location.pathname !== '/'
   return (
     <div className="App">
-      {renderNavBar && <NavBar/>}
+      {render && <NavBar/>}
       <main>
         <Routes>
           <Route path='/' element={<LogIn />} />
           <Route path='/inicio' element={<PrivateRoute><Inicio /></PrivateRoute>} />
+          <Route path='/crearReclamo' element={<PrivateRoute><CrearReclamo /></PrivateRoute>} />
+          <Route path='/reclamo/:idReclamo' element={<PrivateRoute><Reclamo /></PrivateRoute>} />
         </Routes>
       </main>
+      {/* {render && <Footer/>} */}
     </div>
   )
 }

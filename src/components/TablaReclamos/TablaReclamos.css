@@ -1,0 +1,17 @@
+th, td {
+  text-align: center;
+}
+.table {
+  width: 90vw;
+}
+@media (prefers-color-scheme: light) {
+  th, td {
+    background: whitesmoke;
+  } 
+}
+@media (prefers-color-scheme: dark) {
+  th, td {
+    background: #202124 !important;
+    color: white !important;
+  } 
+}

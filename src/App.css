@@ -1,3 +1,4 @@
+/* App */
 .App {
   font-family: 'Fredoka', sans-serif;
 }
@@ -6,7 +7,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: calc(100vh - 96px);
 }
+
+/* LogIn */
 .logoInicio{
   position: fixed;
   left: 20px;
@@ -14,6 +18,7 @@
   width: 100px;
 }
 
+/* Inicio */
 .cabeceraReclamos{
   width: 100%;
   padding: 20px;
@@ -28,15 +33,5 @@
   .App {
     background: #202124;
     color: white;
-  } 
-  .card-title{
-    color: white;
-  }
-  label{
-    color: white;
-  }
-  .form-control{
-    background-color: #202124 !important;
-    color: white !important;
   }
 }

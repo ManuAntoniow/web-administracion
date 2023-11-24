@@ -1,33 +1,46 @@
-// REACT 
-import { useState, useEffect } from "react"
+// REACT
+import {Link} from 'react-router-dom'
 
 // BOOTSTRAP
 import Table from 'react-bootstrap/Table'
 
-// DB
-import axios from 'axios'
-import { URL } from '../../App'
+// CSS
+import './TablaReclamos.css'
 
-const TablaReclamos = () => {
-  const [datosTable, setDatosTable] = useState()
-
-  useEffect(() => {
-    axios.get(`${URL}reclamos/reclamosPorPersona/DNI30609972`)
-  })
-
+const TablaReclamos = ({datosTable, sinDatos}) => {
   return (
-    <Table responsive>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Codigo Edificio</th>
-          <th>Identificador Unidad</th>
-        </tr>
-      </thead>
-      <tbody>
-
-      </tbody>
-    </Table>
+    <>
+      { sinDatos ?
+        <h3>Sin Datos</h3>
+      :
+        <Table striped responsive>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Codigo Edificio</th>
+              <th>Identificador Unidad</th>
+              <th>Estado</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {datosTable.map((info) => {
+              return(
+                <tr key={info.idReclamo}>
+                  <td>{info.idReclamo}</td>
+                  <td>{info.codigo}</td>
+                  <td>{info.identificador}</td>
+                  <td>{info.estado}</td>
+                  <td>
+                    <Link to={`/reclamo/${info.idReclamo}`}>Ver mas info</Link>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </Table>
+      }
+    </>
   )
 }
 
