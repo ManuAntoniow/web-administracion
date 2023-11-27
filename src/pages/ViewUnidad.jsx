@@ -1,5 +1,5 @@
 //REACT
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 // DB
@@ -10,19 +10,15 @@ import { URL } from '../App'
 import Spinner from 'react-bootstrap/Spinner'
 
 // COMPONENTS
-import ReclamoCard from '../components/Cards/ReclamoCard'
-import AccionesReclamo from '../components/Acciones/AccionesReclamo'
+import UnidadCard from '../components/Cards/UnidadCard'
+import AccionesUnidad from '../components/Acciones/AccionesUnidad'
 
-// CONTEXT
-import { UserContext } from '../context/UserContext'
-
-const Reclamo = () => {
-  const context = useContext(UserContext)
-  const {idReclamo} = useParams()
+const ViewUnidad = () => {
+  const {idUnidad} = useParams()
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState()
   useEffect(() => {
-    axios.get(`${URL}reclamos/${idReclamo}`)
+    axios.get(`${URL}unidades/${idUnidad}`)
     .then((res) => {
       setData(res.data)
       setLoading(false)
@@ -39,14 +35,12 @@ const Reclamo = () => {
         </Spinner>
       :
       <>
-        <ReclamoCard data={data}/>
-        {context.documento === 'ADMIN000' ?
-          <AccionesReclamo/> : <></>
-        }
+        <UnidadCard data={data}/>
+        <AccionesUnidad data={data}/>
       </>
       }
     </div>
   )
 }
 
-export default Reclamo
+export default ViewUnidad

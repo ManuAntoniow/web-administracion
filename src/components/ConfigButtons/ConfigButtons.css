@@ -1,0 +1,18 @@
+
+@media (prefers-color-scheme: dark) {
+  .dropdown-menu {
+    background-color: #202124;
+  }
+  .dropdown-item {
+    color: white;
+    background-color: #202124;
+  }
+  .dropdown-item:hover {
+    color: white;
+    background-color: #202124;
+  }
+  .modal-content {
+    color: white;
+    background-color: #202124;
+  }
+}

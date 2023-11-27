@@ -1,6 +1,10 @@
-// REACT 
-import { useState, useEffect, useContext } from "react"
+//REACT
+import { useState, useEffect } from 'react'
 import {Link} from 'react-router-dom'
+
+// DB
+import axios from 'axios'
+import { URL } from '../App'
 
 // BOOTSTRAP
 import Spinner from 'react-bootstrap/Spinner'
@@ -9,27 +13,15 @@ import Form from 'react-bootstrap/Form'
 import Stack from 'react-bootstrap/Stack'
 
 // COMPONENTS
-import TablaReclamos from "../components/Tablas/TablaReclamos"
+import TablaUnidades from '../components/Tablas/TablaUnidades'
 
-// DB
-import axios from 'axios'
-import { URL } from '../App'
-
-// CONTEXT
-import { UserContext } from '../context/UserContext'
-
-const Inicio = () => {
-  const [datosTable, setDatosTable] = useState()
-  const [buscar, setBuscar] = useState()
+const Unidades = () => {
   const [loading, setLoading] = useState(true)
   const [sinDatos, setSinDatos] = useState(true)
-  const context = useContext(UserContext)
+  const [buscar, setBuscar] = useState()
+  const [datosTable, setDatosTable] = useState()
   useEffect(() => {
-    var endpoint = `${URL}reclamos/reclamosPorPersona/${context.documento}`
-    if (context.documento === 'ADMIN000') {
-      endpoint = `${URL}reclamos`
-    }
-    axios.get(endpoint)
+    axios.get(`${URL}unidades`)
     .then((res) => {
       console.log(res.data)
       setDatosTable(res.data)
@@ -37,12 +29,7 @@ const Inicio = () => {
       setSinDatos(false)
     })
     .catch((error) => {
-      if (error.response && error.response.status === 404) {
-        console.log('No hay reclamos con ese DNI (404)')
-        setLoading(false)
-      } else {
-        console.error('ERROR:', error.message)
-      }
+      console.error('ERROR:', error.message)
     })
   }, [])
   const handleInputChange = (event) =>{
@@ -57,26 +44,28 @@ const Inicio = () => {
     <div className='contenido'>
       <div className="cabecera">
         <div className='acciones'>
-          <h4>Reclamos</h4>
+          <h4>Unidades</h4>
           <Stack direction="horizontal" gap={3}>
             <Form.Control placeholder="ingrese un ID" onChange={handleInputChange}/>
             <Button onClick={search}>Buscar</Button>
             <div className="vr" />
             <Button variant="outline-danger" onClick={() => location.reload()}>Resetear</Button>
           </Stack>
-          <Button as={Link} to='/cambios/crearReclamo'>Crear reclamo</Button>
+          <div></div>
         </div>
         <hr/>
       </div>
-      { loading ?
+      {loading ?
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       :
-        <TablaReclamos datosTable={datosTable} sinDatos={sinDatos}/>
+        <div>
+          <TablaUnidades datosTable={datosTable} sinDatos={sinDatos}/>
+        </div>
       }
     </div>
   )
 }
 
-export default Inicio
+export default Unidades

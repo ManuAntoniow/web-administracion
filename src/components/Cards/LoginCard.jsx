@@ -22,19 +22,12 @@ const LoginCard = () => {
   const navigate = useNavigate()
   const context = useContext(UserContext)
   const [datos, setDatos] = useState({})
-  
-  /*cada vez que hay un cambio en los inputs 
-  ya sea en el usuario o contraseña
-  setea esa informacion en datos*/
   const handleInputChange = (event) =>{
     setDatos({
       ...datos,
       [event.target.name] : event.target.value
     })
   }
-
-  /*valida que el nombre del usuario exista 
-  y luego valida si la contraseña de ese usuario es correcta*/
   const logIn = async(event) => {
     event.preventDefault()
     console.log(datos)
@@ -42,13 +35,11 @@ const LoginCard = () => {
     console.log(res.data)
     if (res.data) {
       context.userActive(res.data.documento)
-      console.log(res.data.documento)
       navigate('/inicio')
     } else {
       alert('usuario o contraseña incorrectos')
     }
   }
-  
   return (
     <Card>
       <Card.Title>Administracion de Edificios</Card.Title>

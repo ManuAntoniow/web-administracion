@@ -1,6 +1,3 @@
-// REACT
-import { useState } from 'react'
-
 // CSS
 import './Cards.css'
 
@@ -8,20 +5,15 @@ import './Cards.css'
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 
-// DB
-import axios from 'axios'
-import { URL } from '../../App'
-
 const ReclamoCard = ({data}) => {
-  console.log(data)
   return (
-    <Card className='reclamoCard'>
+    <Card className='infoCard'>
       <Card.Title>RECLAMO</Card.Title>
       <Card.Text>
         <ul>
           <li>ID: {data.idReclamo}</li>
-          <li>Ubicacion: {data.idReclamo}</li>
-          <li>Descripcion: {data.idReclamo}</li>
+          <li>Ubicacion: {data.ubicacion}</li>
+          <li>Descripcion: {data.descripcion}</li>
         </ul>
       <Accordion>
         <Accordion.Item eventKey="0">
@@ -38,9 +30,10 @@ const ReclamoCard = ({data}) => {
           <Accordion.Header>Unidad</Accordion.Header>
           <Accordion.Body>
             <ul>
-              <li>ID: {data.persona.nombre}</li>
-              <li>Documento: {data.persona.documento}</li>
-              <li>email: {data.persona.mail}</li>
+              <li>ID: {data.unidad.identificador}</li>
+              <li>Piso: {data.unidad.piso}</li>
+              <li>Numero: {data.unidad.numero}</li>
+              <li>Habitado: {data.unidad.habitado}</li>
             </ul>
           </Accordion.Body>
         </Accordion.Item>
@@ -48,9 +41,9 @@ const ReclamoCard = ({data}) => {
           <Accordion.Header>Edificio</Accordion.Header>
           <Accordion.Body>
             <ul>
-              <li>ID: {data.persona.nombre}</li>
-              <li>Documento: {data.persona.documento}</li>
-              <li>email: {data.persona.mail}</li>
+              <li>Codigo: {data.edificio.codigo}</li>
+              <li>Direccion: {data.edificio.nombre}</li>
+              <li>Nombre: {data.edificio.direccion}</li>
             </ul>
           </Accordion.Body>
         </Accordion.Item>

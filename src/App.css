@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: calc(100vh - 96px);
+  height: calc(100% - 96px);
 }
 
 /* LogIn */
@@ -18,19 +18,29 @@
   width: 100px;
 }
 
-/* Inicio */
-.cabeceraReclamos{
+/* Inicio y Personas y Edificios y Unidades */
+.cabecera{
   width: 100%;
   padding: 20px;
+  margin-top: 25px;
+}
+.acciones {
+  display: flex;
+  justify-content: space-between;
+}
+.search{
+  width: 235px;
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (prefers-color-scheme: light) {
-  .App {
+  body {
     background: whitesmoke;
   } 
 }
 @media (prefers-color-scheme: dark) {
-  .App {
+  body {
     background: #202124;
     color: white;
   }

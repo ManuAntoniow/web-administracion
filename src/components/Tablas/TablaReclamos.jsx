@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import Table from 'react-bootstrap/Table'
 
 // CSS
-import './TablaReclamos.css'
+import './Tablas.css'
 
 const TablaReclamos = ({datosTable, sinDatos}) => {
   return (

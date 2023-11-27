@@ -1,0 +1,12 @@
+.cambiarEstado{
+  display: flex;
+  justify-content: space-around;
+}
+.estado{
+  margin-right: 10px;
+}
+.eliminarReclamo{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

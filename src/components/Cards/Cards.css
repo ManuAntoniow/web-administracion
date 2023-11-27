@@ -4,8 +4,9 @@
   justify-content: center;
   flex-direction: column;
   border-radius: 20px !important;
+  margin-top: 50px;
 }
-.reclamoCard{
+.infoCard{
   width: 50%;
 }
 .CardForm{
@@ -42,8 +43,11 @@
     background: #202124;
     box-shadow: 20px 20px 60px #1b1c1f, -20px -20px 60px #000000;
   } 
-  .card-title, label, .card-text, .form-control, .accordion-item, .accordion-button, .accordion-button:not(.collapsed), .form-control::placeholder, .form-control:focus{
+  .card-title, label, .card-text, .accordion-item, .accordion-button, .accordion-button:not(.collapsed), .form-control, .form-control:focus{
     color: white;
+  }
+  .form-control::placeholder{
+    color: rgb(88, 88, 88);
   }
   .form-control{
     background-color: #202124 !important;
