@@ -14,7 +14,7 @@ import './Acciones.css'
 import axios from 'axios'
 import { URL } from '../../App'
 
-const AccionesReclamo = () => {
+const AccionesReclamo = ({estadoActual}) => {
   const navigate = useNavigate()
   const {idReclamo} = useParams()
   const [estado, setEstado] = useState({})
@@ -44,13 +44,35 @@ const AccionesReclamo = () => {
     })
   }
   return (
-    <Card>
+    <Card className='mb-4'>
       <Card.Title>Acciones</Card.Title>
       <Card.Body>
         <Form.Group controlId="formGridUsuario">
           <Form.Label>Estado</Form.Label>
           <div className='cambiarEstado'>
-            <Form.Control placeholder="Ingrese estado" name='estado' onChange={handleInputChange} className='estado'/>
+            <Form.Select name='estado' className='estado' onChange={handleInputChange}>
+              <option>Seleccione ...</option>
+              {estadoActual == 'nuevo' ?
+                <>
+                <option>abierto</option>
+                <option>desestimado</option>
+                <option>anulado</option>
+                </>
+              : <></>}
+              {estadoActual == 'abierto' ?
+                <>
+                <option>en proceso</option>
+                <option>desestimado</option>
+                <option>anulado</option>
+                </>
+              : <></>}
+              {estadoActual == 'en proceso' ?
+                <>
+                <option>terminado</option>
+                <option>anulado</option>
+                </>
+              : <></>}
+            </Form.Select>
             <Button onClick={cambiarEstado}>Cambiar</Button>
           </div>
         </Form.Group>    

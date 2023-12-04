@@ -62,7 +62,7 @@ const TablaPersonas = ({datosTable, sinDatos}) => {
           </tbody>
         </Table>
         {rowsToShow < datosTable.length && (
-          <Button onClick={handleShowMoreRows}>Mostrar más filas</Button>
+          <Button className='mb-4' onClick={handleShowMoreRows}>Mostrar más filas</Button>
         )}
       </>
       }

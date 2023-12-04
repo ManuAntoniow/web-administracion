@@ -1,6 +1,6 @@
 // REACT 
 import { useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 // BOOTSTRAP
 import Button from 'react-bootstrap/Button'
@@ -15,6 +15,7 @@ import axios from 'axios'
 import { URL } from '../../App'
 
 const AccionesUnidad = ({data}) => {
+  console.log(data)
   const navigate = useNavigate()
   const [documento, setDocumento] = useState({})
   const handleInputChange = (event) =>{
@@ -53,14 +54,36 @@ const AccionesUnidad = ({data}) => {
       alert('algo salio mal')
     })
   }
+  const agregarInquilino = () => {
+    axios.post(`${URL}negocio/agregarInquilinoUnidad/edificio/${data.edificio.codigo}/piso/${data.piso}/numero/${data.numero}/documento/${documento}`)
+    .then((res) => {
+      console.log(res.data)
+      navigate('/unidades')
+    })
+    .catch((error) => {
+      console.error('ERROR:', error)
+      alert('algo salio mal')
+    })
+  }
+  const liberar = () => {
+    axios.post(`${URL}unidades/liberarPorId/${data.identificador}`)
+    .then((res) => {
+      console.log(res.data)
+      navigate('/unidades')
+    })
+    .catch((error) => {
+      console.error('ERROR:', error)
+      alert('algo salio mal')
+    })
+  }
   return (
-    <Card>
+    <Card className='mb-4'>
       <Card.Title>Acciones</Card.Title>
       <Card.Body>
         <Form.Group controlId="formGridUsuario" className='mb-3'>
           <Form.Label>Transferir Unidad</Form.Label>
           <div className='cambiarEstado'>
-            <Form.Control placeholder="Ingrese un documento" name='estado' onChange={handleInputChange} className='estado'/>
+            <Form.Control placeholder="Ingrese un documento" onChange={handleInputChange} className='estado'/>
             <Button onClick={transfeir}>Transferir</Button>
           </div>
         </Form.Group>  
@@ -68,18 +91,30 @@ const AccionesUnidad = ({data}) => {
         <Form.Group controlId="formGridUsuario" className='mb-3'>
           <Form.Label>Agregar un Dueño</Form.Label>
           <div className='cambiarEstado'>
-            <Form.Control placeholder="Ingrese un documento" name='estado' onChange={handleInputChange} className='estado'/>
+            <Form.Control placeholder="Ingrese un documento" onChange={handleInputChange} className='estado'/>
             <Button onClick={agregarDuenio}>Agregar</Button>
           </div>
         </Form.Group>  
-
-        <Form.Group controlId="formGridUsuario" className='mb-3'>
-          <Form.Label>Alquilar Unidad</Form.Label>
-          <div className='cambiarEstado'>
-            <Form.Control placeholder="Ingrese un documento" name='estado' onChange={handleInputChange} className='estado'/>
-            <Button onClick={alquilar}>Alquilar</Button>
-          </div>
-        </Form.Group> 
+        {data.inquilinos.length == 0 ?
+          <Form.Group controlId="formGridUsuario" className='mb-3'>
+            <Form.Label>Alquilar Unidad</Form.Label>
+            <div className='cambiarEstado'>
+              <Form.Control placeholder="Ingrese un documento" onChange={handleInputChange} className='estado'/>
+              <Button onClick={alquilar}>Alquilar</Button>
+            </div>
+          </Form.Group> 
+        : 
+          <Form.Group controlId="formGridUsuario" className='mb-3'>
+            <Form.Label>Agregar Inquilino</Form.Label>
+            <div className='cambiarEstado'>
+              <Form.Control placeholder="Ingrese un documento" onChange={handleInputChange} className='estado'/>
+              <Button onClick={agregarInquilino}>Agregar</Button>
+            </div>
+          </Form.Group>
+        }
+        <div className='eliminarReclamo'>
+          <Button variant='outline-danger' onClick={liberar}>Liberar Unidad</Button>
+        </div>
       </Card.Body>
     </Card>
   )

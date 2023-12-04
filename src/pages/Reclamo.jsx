@@ -21,15 +21,25 @@ const Reclamo = () => {
   const {idReclamo} = useParams()
   const [loading, setLoading] = useState(true)
   const [data, setData] = useState()
+  const [img, setImg] = useState()
   useEffect(() => {
     axios.get(`${URL}reclamos/${idReclamo}`)
     .then((res) => {
       setData(res.data)
-      setLoading(false)
+      axios.get(`${URL}imagenes/buscarImagenesSegunIdReclamo/${idReclamo}`)
+      .then((res) => {
+        console.log(res.data)
+        setImg(res.data)
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.error('ERROR:', error.message)
+      })
     })
     .catch((error) => {
       console.error('ERROR:', error.message)
     })
+
   }, [])
   return (
     <div className='contenido'>
@@ -39,9 +49,9 @@ const Reclamo = () => {
         </Spinner>
       :
       <>
-        <ReclamoCard data={data}/>
+        <ReclamoCard data={data} img={img}/>
         {context.documento === 'ADMIN000' ?
-          <AccionesReclamo/> : <></>
+          <AccionesReclamo estadoActual={data.estado}/> : <></>
         }
       </>
       }

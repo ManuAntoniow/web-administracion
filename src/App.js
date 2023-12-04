@@ -53,7 +53,7 @@ function AppContent() {
           <Route path='/cambios/:tipo' element={<PrivateRoute><Cambios /></PrivateRoute>} />
         </Routes>
       </main>
-      {/* {render && <Footer/>} */}
+      {render && <Footer/>}
     </div>
   )
 }

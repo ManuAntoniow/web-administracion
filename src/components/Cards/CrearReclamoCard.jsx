@@ -31,6 +31,7 @@ const CrearReclamoCard = () => {
     "descripcion": "",
     "codigo": 0
   })
+  const [img, setImg] = useState()
   useEffect(() => {
     const procesarResultados = (data) => {
       const objetosEncontrados = []
@@ -71,23 +72,38 @@ const CrearReclamoCard = () => {
       })
   }, [])
   const handleInputChange = (event) =>{
-    setDatos({
-      ...datos,
-      [event.target.name] : event.target.value
-    })
+    if (event.target.name !== 'imagen') {
+      setDatos({
+        ...datos,
+        [event.target.name] : event.target.value
+      })
+    } else {
+      setImg(event.target.value)
+    }
   }
   const crearReclamo = (event) => {
     event.preventDefault()
-    if (Object.keys(datos).length === 6) {
+    if (datos.identificador) {
       axios.post(`${URL}reclamos`, datos)
       .then((res) => {
         console.log(res.data)
+        if (img && res.data.idReclamo) {
+          const info = {
+            "path": img,
+            "idReclamo": res.data.idReclamo,
+            "tipo": 'reclamo'
+          }
+          axios.post(`${URL}imagenes`, info)
+          .then((res) => {
+            console.log(res.data)
+          })
+        }
         navigate('/inicio')
       })
     } else {
       alert('campos incompletos')
     }
-  }
+  }  
   return (
     <div className='contenido'>
       { loading ?
@@ -115,6 +131,12 @@ const CrearReclamoCard = () => {
                     name='descripcion' 
                     onChange={handleInputChange}
                   />
+                </Form.Group>
+              </Row>
+              <Row className='mb-3'>
+                <Form.Group controlId="formGridUsuario">
+                  <Form.Label>Imagen</Form.Label>
+                  <Form.Control placeholder="link de la imagen" name='imagen' onChange={handleInputChange}/>
                 </Form.Group>
               </Row>
               <Row className='mb-3'>

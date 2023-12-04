@@ -2,8 +2,15 @@ footer{
   text-align: center;
   width: 100%;
   background-color: gray;
-  position: absolute;
-  bottom: 0;
-  margin-top: 100px;
+  margin-top: auto;
   box-shadow: -20px 0px 60px #bebebe;
+}
+.texto{
+  margin: 5px;
+}
+@media (prefers-color-scheme: dark) {
+  footer {
+    box-shadow: 20px 20px 60px #1b1c1f, -20px -20px 60px #000000;
+    background-color: rgb(85, 85, 85);
+  } 
 }

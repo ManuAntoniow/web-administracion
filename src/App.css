@@ -1,6 +1,9 @@
 /* App */
 .App {
   font-family: 'Fredoka', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .contenido{
   display: flex;
@@ -8,6 +11,9 @@
   align-items: center;
   flex-direction: column;
   height: calc(100% - 96px);
+}
+.spinner-border{
+  margin-top: 50px;
 }
 
 /* LogIn */

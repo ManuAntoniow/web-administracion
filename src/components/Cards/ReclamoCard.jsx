@@ -5,10 +5,13 @@ import './Cards.css'
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 
-const ReclamoCard = ({data}) => {
+const ReclamoCard = ({data, img}) => {
   return (
     <Card className='infoCard'>
       <Card.Title>RECLAMO</Card.Title>
+      {img.length > 0 ?
+        <Card.Img variant="top" src={img[0].path} />
+      : <></>}
       <Card.Text>
         <ul>
           <li>ID: {data.idReclamo}</li>

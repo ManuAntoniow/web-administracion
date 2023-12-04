@@ -10,3 +10,9 @@
   justify-content: center;
   margin-top: 20px;
 }
+@media (prefers-color-scheme: dark) {
+  .form-select {
+    background: #202124;
+    color: white;
+  }
+}
