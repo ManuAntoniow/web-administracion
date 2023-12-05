@@ -50,7 +50,8 @@ const Inicio = () => {
   }
   const search = () => {
     console.log(buscar)
-    const filtrar = datosTable.filter(objeto => objeto.identificador.includes(buscar))
+    console.log(datosTable)
+    const filtrar = datosTable.filter(objeto => String(objeto.idReclamo).includes(String(buscar)))
     setDatosTable(filtrar)
   }
   return (
